@@ -1,36 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dice</title>
     <style>
-       div {
-        /* position: relative;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: center; */
-        margin: 30px auto;
+        body {
+            margin: 0px auto;
+            width: 70%;
+            background-color: #afffe4;
         }
-        /* #anounce {
-            position:relative;
-            display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: center;
-        } */
+
+        #heading {
+            color: cornflowerblue;
+            border-left: 0px;
+            border-right: 0px;
+            border-top: 5px;
+            border-bottom: 5px;
+            border-color: cornflowerblue;
+            border-style: solid;
+            text-decoration: dotted;
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+        }
+
+        .headings {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            visibility: hidden;
+        }
+
+        #contentbox {
+            /* border: 1px solid black; */
+        }
+
+        #declarations {
+            width: 240px;
+            margin: 20px auto;
+            position: relative;
+            /* border: 1px solid black; */
+        }
+
+        #player1win {
+            position: absolute;
+        }
+
+        #player2win {
+            position: absolute;
+        }
+        #noplayerwin {
+            position: absolute;
+        }
+
+        #dicebox {
+            margin-top: 100px;
+        }    
+        #leftdice {
+            float: left;
+            position: relative;
+            width: 200px;
+            aspect-ratio: 1/1;
+            /* border: 1px solid red; */
+        }
+
+        #rightdice {
+            position: relative;
+            float: right;
+            width: 200px;
+            aspect-ratio: 1/1;
+            /* border: 1px solid red; */
+        }
+
+        #btnbox {
+            border: 2px solid rgba(0, 128, 0, 0);
+            margin: 0px auto;
+            width: 50%;
+        }
+
+        #btn {
+            display: block;
+            /* width: 150px; */
+            margin: 80px auto;
+            font-size: large;
+            padding: 5px 20px;
+        }
+
+        img {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        @media screen and (max-width:420px) {
+            #declarations {
+                bottom: 80px;
+            }
+            #btnbox {
+                margin-top: 150px;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div>
-        <h1 class="headings">Roll Dice</h1>
-        <div id="anounce">
+    <h1 id="heading">Roll Dice</h1>
+    <div id="contentbox">
+        <div id="declarations">
             <h1 class="headings" id="player1win">Player 1 wins</h1>
-            <h1 class="headings" id="player2win">player 2 wins</h1>
+            <h1 class="headings" id="player2win">Player 2 wins</h1>
+            <h1 class="headings" id="noplayerwin">Players are equal</h1>
+        </div>
+        <div id="dicebox">
+            <div id="leftdice">
+                <img src="oneface.png" id="onel">
+                <img src="twoface.png" id="twol">
+                <img src="threeface.png" id="threel">
+                <img src="fourface.png" id="fourl">
+                <img src="fiveface.png" id="fivel">
+                <img src="sixface.png" id="sixl">
+            </div>
+            <div id="rightdice">
+                <img src="oneface.png" id="oner">
+                <img src="twoface.png" id="twor">
+                <img src="threeface.png" id="threer">
+                <img src="fourface.png" id="fourr">
+                <img src="fiveface.png" id="fiver">
+                <img src="sixface.png" id="sixr">
+            </div>
+            <div id="btnbox">
+                <input id="btn" type="button" value="re-roll" onClick="window.location.reload();">
+            </div>
         </div>
     </div>
-    <p>this is test</p>
+    <script>
+        n = Math.random()
+        n = n * 6
+        dice1 = Math.floor(n)
+        m = Math.random()
+        m = m * 6
+        dice2 = Math.floor(m)
+        switch (dice1) {
+            case 0:
+                document.getElementById("onel").style.visibility = ("visible")
+                break;
+            case 1:
+                document.getElementById("twol").style.visibility = ("visible")
+
+                break;
+            case 2:
+                document.getElementById("threel").style.visibility = ("visible")
+
+                break;
+            case 3:
+                document.getElementById("fourl").style.visibility = ("visible")
+
+                break;
+            case 4:
+                document.getElementById("fivel").style.visibility = ("visible")
+
+                break;
+            case 5:
+                document.getElementById("sixl").style.visibility = ("visible")
+
+                break;
+
+            default:
+                break;
+        }
+        switch (dice2) {
+            case 0:
+                document.getElementById("oner").style.visibility = ("visible")
+
+                break;
+            case 1:
+                document.getElementById("twor").style.visibility = ("visible")
+
+                break;
+            case 2:
+                document.getElementById("threer").style.visibility = ("visible")
+
+                break;
+            case 3:
+                document.getElementById("fourr").style.visibility = ("visible")
+
+                break;
+            case 4:
+                document.getElementById("fiver").style.visibility = ("visible")
+
+                break;
+            case 5:
+                document.getElementById("sixr").style.visibility = ("visible")
+
+                break;
+
+            default:
+                break;
+        }
+        if (dice1>dice2) {
+            document.getElementById("player1win").style.visibility = ("visible")
+        } else if (dice1<dice2){
+            document.getElementById("player2win").style.visibility = ("visible")
+        } else {
+            document.getElementById("noplayerwin").style.visibility = ("visible")
+        }
+        
+    </script>
 </body>
+
 </html>
